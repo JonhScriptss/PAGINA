@@ -33,12 +33,12 @@
       font-size: 2.5em;
       color: #00ffcc;
       text-shadow: 0 0 20px #00ffcc;
-      margin: 10px 0 30px 0;
+      margin: 20px 0;
     }
 
     .logo {
       max-width: 200px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       filter: drop-shadow(0 0 10px #00aaff);
       border-radius: 10px;
     }
@@ -61,7 +61,7 @@
   </style>
 </head>
 <body>
-  <img src="18a7e8ef-830f-4d4d-9fd1-9f4f7bb74808.png" alt="Logo MTA" class="logo" />
+  <img src="ca8ec335-ecc1-4da4-b07e-998bc3edc763.png" alt="Logo MTA" class="logo" />
   <h2>Gran Colombia</h2>
   <h1>EL MEJOR SERVER DE MTA</h1>
   <a class="discord-btn" href="https://discord.gg/9dfk4p4CvD" target="_blank">Únete a nuestro Discord</a>
