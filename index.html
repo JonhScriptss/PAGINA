@@ -25,11 +25,16 @@
       font-size: 1.5rem;
     }
 
-    header h1 span {
-      font-weight: bold;
+    .title-span:nth-child(1) { color: yellow; }
+    .title-span:nth-child(2) { color: #00c3ff; }
+    .title-span:nth-child(3) { color: red; }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
     }
 
-    .login-btn {
+    .login-btn, .register-btn {
       background-color: #00c3ff;
       border: none;
       padding: 10px 15px;
@@ -62,7 +67,6 @@
       text-shadow: 0 0 8px #00ffcc;
     }
 
-    /* Modal panel */
     .modal {
       display: none;
       position: fixed;
@@ -110,17 +114,35 @@
       font-size: 1.2rem;
       cursor: pointer;
     }
+
+    .discord-section {
+      margin-top: 40px;
+    }
+
+    .discord-section img {
+      width: 40px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .error-msg {
+      color: red;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>
-      <span style="color: yellow;">Gran</span>
-      <span style="color: blue;">Colombia</span>
-      <span style="color: red;">RP</span>
+      <span class="title-span">Gran</span> 
+      <span class="title-span">Colombia</span> 
+      <span class="title-span">RP</span>
     </h1>
-    <button class="login-btn" onclick="openModal()">Iniciar sesión</button>
+    <div class="buttons">
+      <button class="register-btn" onclick="openModal('register')">Registrarse</button>
+      <button class="login-btn" onclick="openModal('login')">Iniciar sesión</button>
+    </div>
   </header>
 
   <div class="container">
@@ -129,52 +151,89 @@
     <div class="info">IP: <span class="highlight">mtasa://161.129.181.10:7036</span></div>
 
     <div class="welcome" id="welcomeMsg" style="display: none;"></div>
+
+    <div class="discord-section">
+      <p>Únete a nuestro Discord:</p>
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" title="Copiar Discord" onclick="copyDiscord()">
+    </div>
   </div>
 
-  <!-- Modal -->
-  <div id="loginModal" class="modal">
+  <!-- Modal (compartido para login y registro) -->
+  <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Iniciar sesión</h2>
+      <h2 id="modalTitle">Iniciar sesión</h2>
       <input type="text" id="usernameInput" placeholder="Usuario">
       <br>
       <input type="password" id="passwordInput" placeholder="Contraseña">
       <br>
-      <button onclick="loginUser()">Entrar</button>
+      <button id="modalButton" onclick="handleAuth()">Entrar</button>
+      <div class="error-msg" id="errorMsg"></div>
     </div>
   </div>
 
   <script>
-    // Modal logic
-    function openModal() {
-      document.getElementById("loginModal").style.display = "block";
+    let isRegister = false;
+
+    function openModal(mode) {
+      isRegister = (mode === 'register');
+      document.getElementById("modalTitle").innerText = isRegister ? "Registrarse" : "Iniciar sesión";
+      document.getElementById("modalButton").innerText = isRegister ? "Crear cuenta" : "Entrar";
+      document.getElementById("errorMsg").innerText = "";
+      document.getElementById("modal").style.display = "block";
     }
 
     function closeModal() {
-      document.getElementById("loginModal").style.display = "none";
+      document.getElementById("modal").style.display = "none";
     }
 
-    // Login (fake, with localStorage)
-    function loginUser() {
+    function handleAuth() {
       const user = document.getElementById("usernameInput").value.trim();
       const pass = document.getElementById("passwordInput").value.trim();
+      const error = document.getElementById("errorMsg");
 
-      if (user && pass) {
-        localStorage.setItem("user", user);
-        showWelcome(user);
-        closeModal();
+      if (!user || !pass) {
+        error.innerText = "Completa todos los campos.";
+        return;
+      }
+
+      if (isRegister) {
+        if (localStorage.getItem(`user_${user}`)) {
+          error.innerText = "Ese usuario ya existe.";
+        } else {
+          localStorage.setItem(`user_${user}`, pass);
+          localStorage.setItem("current_user", user);
+          showWelcome(user);
+          closeModal();
+        }
+      } else {
+        const savedPass = localStorage.getItem(`user_${user}`);
+        if (savedPass && savedPass === pass) {
+          localStorage.setItem("current_user", user);
+          showWelcome(user);
+          closeModal();
+        } else {
+          error.innerText = "Usuario o contraseña incorrectos.";
+        }
       }
     }
 
     function showWelcome(user) {
-      const msg = `¡Bienvenido de nuevo, ${user}!`;
+      const msg = `Bienvenido de nuevo, ${user}!`;
       const welcome = document.getElementById("welcomeMsg");
       welcome.innerText = msg;
       welcome.style.display = "block";
     }
 
+    function copyDiscord() {
+      const discordLink = "https://discord.gg/ejemplo"; // Cambia esto por tu link real
+      navigator.clipboard.writeText(discordLink).then(() => {
+        alert("¡Link de Discord copiado!");
+      });
+    }
+
     window.onload = () => {
-      const savedUser = localStorage.getItem("user");
+      const savedUser = localStorage.getItem("current_user");
       if (savedUser) showWelcome(savedUser);
     };
   </script>
