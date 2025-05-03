@@ -1,47 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Gran Colombia</title>
+  <meta charset="UTF-8">
+  <title>Nexx Host</title>
   <style>
     body {
-      background-color: black;
-      color: white;
+      background-color: #0b0b0b;
       font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    .titulo {
-      color: cyan;
-      font-size: 2em;
-    }
-    .subtitulo {
-      color: lime;
-      font-size: 1.5em;
-    }
-    .ip {
-      margin: 20px 0;
-      color: #fff;
-    }
-    .boton-discord {
-      padding: 12px 24px;
-      background-color: #7289da;
       color: white;
-      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #00c3ff;
+      text-shadow: 0 0 10px #00c3ff;
+    }
+
+    .info {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+
+    .panel {
+      background: #111;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #7289da;
-      display: inline-block;
-      text-decoration: none;
+      box-shadow: 0 0 15px #00c3ff;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00c3ff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00c3ff;
+    }
+
+    .welcome {
+      font-size: 1.3rem;
+      margin-top: 20px;
+      color: #00ffcc;
+      text-shadow: 0 0 8px #00ffcc;
+    }
+
+    .highlight {
+      color: #00ffcc;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <p>By JonhScripts</p>
-  <p>Server en desarrollo</p>
-  <p class="ip">IP: <b>mtasa://161.129.181.10:7036</b></p>
-  <h1 class="titulo">Gran Colombia</h1>
-  <h2 class="titulo">EL MEJOR SERVER DE MTA</h2>
-  <br>
-  <a class="boton-discord" href="https://discord.gg/tuservidor" target="_blank">Únete a nuestro Discord</a>
+
+  <h1>🌐 Nexx Host</h1>
+  <div class="info">By JonhScripts</div>
+  <div class="info">Server en desarrollo</div>
+  <div class="info">IP: <span class="highlight">mtasa://161.129.181.10:7036</span></div>
+
+  <div class="panel" id="registerPanel">
+    <h2>Ingresa tu nombre</h2>
+    <input type="text" id="usernameInput" placeholder="Tu nombre...">
+    <br>
+    <button onclick="registerUser()">Entrar</button>
+  </div>
+
+  <div class="welcome" id="welcomeMsg" style="display: none;"></div>
+
+  <script>
+    function registerUser() {
+      const username = document.getElementById("usernameInput").value.trim();
+      if (username) {
+        localStorage.setItem("username", username);
+        showWelcome(username);
+      }
+    }
+
+    function showWelcome(name) {
+      document.getElementById("registerPanel").style.display = "none";
+      const msg = `Bienvenido de nuevo, ${name}!`;
+      const welcome = document.getElementById("welcomeMsg");
+      welcome.innerText = msg;
+      welcome.style.display = "block";
+    }
+
+    window.onload = function () {
+      const savedUser = localStorage.getItem("username");
+      if (savedUser) {
+        showWelcome(savedUser);
+      }
+    };
+  </script>
+
 </body>
 </html>
