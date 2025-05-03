@@ -1,1 +1,52 @@
-# PAGINA
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El mejor server de MTA</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      color: #00aaff;
+      text-shadow: 2px 2px 8px rgba(0,170,255,0.5);
+      border: 3px solid #00aaff;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    a.discord-btn {
+      margin-top: 40px;
+      background-color: #7289da;
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 0 0 10px #7289da;
+      transition: background 0.3s;
+    }
+
+    a.discord-btn:hover {
+      background-color: #5b6eae;
+    }
+  </style>
+</head>
+<body>
+  <h1>EL MEJOR SERVER DE MTA</h1>
+  <a class="discord-btn" href="https://discord.gg/9dfk4p4CvD" target="_blank">Únete a nuestro Discord</a>
+</body>
+</html>
