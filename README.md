@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>El mejor server de MTA</title>
+  <title>Gran Colombia - MTA Server</title>
   <style>
     body {
       margin: 0;
@@ -16,19 +16,34 @@
       flex-direction: column;
       height: 100vh;
       text-align: center;
+      background-image: radial-gradient(circle, #101010 0%, #000000 100%);
     }
 
     h1 {
       font-size: 3.5em;
       color: #00aaff;
-      text-shadow: 2px 2px 8px rgba(0,170,255,0.5);
+      text-shadow: 2px 2px 12px rgba(0,170,255,0.6);
       border: 3px solid #00aaff;
-      padding: 20px;
+      padding: 20px 40px;
       border-radius: 20px;
+      margin: 20px 0;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      color: #00ffcc;
+      text-shadow: 0 0 20px #00ffcc;
+      margin: 10px 0 30px 0;
+    }
+
+    .logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 10px #00aaff);
+      border-radius: 10px;
     }
 
     a.discord-btn {
-      margin-top: 40px;
       background-color: #7289da;
       color: white;
       text-decoration: none;
@@ -36,7 +51,7 @@
       border-radius: 10px;
       font-weight: bold;
       font-size: 1.2em;
-      box-shadow: 0 0 10px #7289da;
+      box-shadow: 0 0 15px #7289da;
       transition: background 0.3s;
     }
 
@@ -46,6 +61,8 @@
   </style>
 </head>
 <body>
+  <img src="18a7e8ef-830f-4d4d-9fd1-9f4f7bb74808.png" alt="Logo MTA" class="logo" />
+  <h2>Gran Colombia</h2>
   <h1>EL MEJOR SERVER DE MTA</h1>
   <a class="discord-btn" href="https://discord.gg/9dfk4p4CvD" target="_blank">Únete a nuestro Discord</a>
 </body>
