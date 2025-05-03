@@ -3,61 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexx Host</title>
+  <title>Gran Colombia - MTA Server</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: white;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
       text-align: center;
+      background-image: radial-gradient(circle, #101010 0%, #000000 100%);
     }
-    header {
-      padding: 60px 20px;
-      background: linear-gradient(to right, #3f51b5, #2196f3);
+
+    .top-text {
+      margin-top: 20px;
     }
+
+    .top-text p {
+      margin: 5px 0;
+      font-size: 1.1em;
+      color: #ccc;
+    }
+
+    .top-text .by {
+      color: #888;
+      font-size: 0.95em;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      color: #00ffcc;
+      text-shadow: 0 0 20px #00ffcc;
+      margin: 20px 0;
+    }
+
     h1 {
       font-size: 3em;
-      margin: 0;
+      color: #00aaff;
+      text-shadow: 2px 2px 12px rgba(0,170,255,0.6);
+      border: 3px solid #00aaff;
+      padding: 20px 40px;
+      border-radius: 20px;
+      margin: 20px 0;
     }
-    p {
-      font-size: 1.2em;
-      margin: 10px 0 40px;
-    }
-    .button {
-      background: #fff;
-      color: #3f51b5;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
+
+    a.discord-btn {
+      background-color: #7289da;
+      color: white;
       text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: 0 0 15px #7289da;
+      transition: background 0.3s;
     }
-    section {
-      padding: 40px 20px;
-      background-color: #1f1f1f;
-    }
-    footer {
-      padding: 20px;
-      font-size: 0.9em;
-      background-color: #121212;
+
+    a.discord-btn:hover {
+      background-color: #5b6eae;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Nexx Host</h1>
-    <p>Hosting confiable para servidores MTA:SA</p>
-    <a class="button" href="#">Ver Planes</a>
-  </header>
 
-  <section>
-    <h2>¿Por qué elegirnos?</h2>
-    <p>✔️ Servidores estables<br>✔️ Soporte rápido<br>✔️ Precios accesibles</p>
-  </section>
+  <div class="top-text">
+    <p class="by">By JonhScripts</p>
+    <p>Server en desarrollo</p>
+    <p>IP: <strong>mtasa://161.129.181.10:7036</strong></p>
+  </div>
 
-  <footer>
-    &copy; 2025 Nexx Host. Todos los derechos reservados.
-  </footer>
+  <h2>Gran Colombia</h2>
+  <h1>EL MEJOR SERVER DE MTA</h1>
+
+  <a class="discord-btn" href="https://discord.gg/9dfk4p4CvD" target="_blank">Únete a nuestro Discord</a>
+
 </body>
 </html>
