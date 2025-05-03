@@ -19,14 +19,21 @@
       background-image: radial-gradient(circle, #101010 0%, #000000 100%);
     }
 
-    h1 {
-      font-size: 3.5em;
-      color: #00aaff;
-      text-shadow: 2px 2px 12px rgba(0,170,255,0.6);
-      border: 3px solid #00aaff;
-      padding: 20px 40px;
-      border-radius: 20px;
-      margin: 20px 0;
+    .top-text {
+      position: absolute;
+      top: 20px;
+      text-align: center;
+    }
+
+    .top-text p {
+      margin: 5px 0;
+      font-size: 1.1em;
+      color: #ccc;
+    }
+
+    .top-text .by {
+      color: #888;
+      font-size: 0.95em;
     }
 
     h2 {
@@ -36,11 +43,14 @@
       margin: 20px 0;
     }
 
-    .logo {
-      max-width: 200px;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 0 10px #00aaff);
-      border-radius: 10px;
+    h1 {
+      font-size: 3.5em;
+      color: #00aaff;
+      text-shadow: 2px 2px 12px rgba(0,170,255,0.6);
+      border: 3px solid #00aaff;
+      padding: 20px 40px;
+      border-radius: 20px;
+      margin: 20px 0;
     }
 
     a.discord-btn {
@@ -61,9 +71,16 @@
   </style>
 </head>
 <body>
-  <img src="ca8ec335-ecc1-4da4-b07e-998bc3edc763.png" alt="Logo MTA" class="logo" />
+
+  <div class="top-text">
+    <p class="by">By JonhScripts</p>
+    <p>Server en desarrollo</p>
+    <p>IP: <strong>mtasa://161.129.181.10:7036</strong></p>
+  </div>
+
   <h2>Gran Colombia</h2>
   <h1>EL MEJOR SERVER DE MTA</h1>
   <a class="discord-btn" href="https://discord.gg/9dfk4p4CvD" target="_blank">Únete a nuestro Discord</a>
+
 </body>
 </html>
